@@ -315,7 +315,7 @@ def collate_fn(batch):
     b_pad = r
     max_target_len += b_pad * downsample_step
 
-    a = np.array([_pad(x[0], max_input_len) for x in batch], dtype=np.int)
+    a = np.array([_pad(x[0], max_input_len) for x in batch], dtype=int)
     x_batch = torch.LongTensor(a)
 
     input_lengths = torch.LongTensor(input_lengths)
@@ -331,7 +331,7 @@ def collate_fn(batch):
 
     # text positions
     text_positions = np.array([_pad(np.arange(1, len(x[0]) + 1), max_input_len)
-                               for x in batch], dtype=np.int)
+                               for x in batch], dtype=int)
     text_positions = torch.LongTensor(text_positions)
 
     max_decoder_target_len = max_target_len // r // downsample_step
