@@ -3,11 +3,10 @@ channels:
   - pytorch
 dependencies:
   - python=3.8
-  - protobuf=3.13.0
   - pip
   - pip:
-    - moreh-driver==22.12.1
-    - torch==1.7.1+cu110.moreh22.12.1
+    - moreh-driver==0.2.0
+    - torch==1.10.0+cpuonly.moreh0.2.0
     - torchvision
     - torchaudio
     - -e ".[bin]"
