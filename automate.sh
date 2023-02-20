@@ -4,7 +4,7 @@
 
 set -e
 
-DATASET_ROOT="/NAS/common_data"
+DATASET_ROOT="/nas/common_data"
 LJSPEECH_LINK="https://data.keithito.com/data/speech/LJSpeech-1.1.tar.bz2"
 PRESET_FILE="presets/deepvoice3_ljspeech.json"
 PROCESSED_DATA="data/ljspeech"
@@ -15,13 +15,13 @@ if [[ ! -d "${DATASET_ROOT}/LJSpeech-1.1" ]]; then
     rm -f $DATASET_ROOT/ljspeech.tar.bz2
 fi
 
-env_file="hacenv.yml"
-#env_file="hacenv2.yml"
+#env_file="hacenv.yml"
+env_file="hacenv2.yml"
 env_name=$(grep ^name: $env_file | awk '{print $NF}')
 
 conda env create -f $env_file
-conda run -n $env_name update-moreh --force
-# conda run -n $env_name update-moreh --force --driver-only --target 0.2.0
+#conda run -n $env_name update-moreh --force --target 23.3.0
+conda run -n $env_name update-moreh --force --target 23.3.0 --nightly
 
 if [[ ! -d $PROCESSED_DATA ]]; then
     mkdir -p $PROCESSED_DATA

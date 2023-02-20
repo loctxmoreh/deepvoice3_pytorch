@@ -1,12 +1,13 @@
-name: deepvoice3
+name: deepvoice3-2
 channels:
   - pytorch
 dependencies:
   - python=3.8
+  - numpy
   - pip
   - pip:
-    - moreh-driver==0.2.0
-    - torch==1.10.0+cpuonly.moreh0.2.0
+    - moreh-driver==22.12.3
+    - torch==1.10.0+cu111.moreh22.12.3
     - torchvision
     - torchaudio
     - -e ".[bin]"
